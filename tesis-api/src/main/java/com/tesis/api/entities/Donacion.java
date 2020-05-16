@@ -7,10 +7,12 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -32,7 +34,26 @@ public class Donacion implements Serializable {
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="donacion_id",referencedColumnName="id")
 	public List<Producto>producto=new ArrayList<>();
+	
+	@ManyToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	private List<Estado>estados;
 
+	public List<Producto> getProducto() {
+		return producto;
+	}
+
+	public void setProducto(List<Producto> producto) {
+		this.producto = producto;
+	}
+	
+
+	public List<Estado> getEstados() {
+		return estados;
+	}
+
+	public void setEstados(List<Estado> estados) {
+		this.estados = estados;
+	}
 
 	@PrePersist
 	public void prePersist() {
