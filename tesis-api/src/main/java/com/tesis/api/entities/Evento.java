@@ -33,7 +33,7 @@ public class Evento implements Serializable{
 	
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="donacion_id",referencedColumnName="id")
+	@JoinColumn(name="evento_id",referencedColumnName="id")
 	private List<Donacion>donacion=new ArrayList<>();
 	
 	
@@ -107,8 +107,7 @@ public class Evento implements Serializable{
 	public void setEmpresa_id(Long empresa_id) {
 		this.empresa_id = empresa_id;
 	}
-
-
+	
 	/**
 	 * 
 	 */

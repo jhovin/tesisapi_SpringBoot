@@ -41,19 +41,19 @@ public class EventoController {
 	}
 	
 	@PutMapping("/eventos/{id}")
-	public Evento update(@RequestBody Evento evento,@PathVariable Long id) {
+	public Evento update(@PathVariable(value="id") Long id,@RequestBody Evento evento) {
 		Evento eve=eventoService.findById(id);
-		eve.setNombre(eve.getNombre());
-		eve.setLugar(eve.getLugar());
-		eve.setFecha_even(eve.getFecha_even());
-		eve.setDescripcion(eve.getDescripcion());
+		eve.setNombre(evento.getNombre());
+		eve.setLugar(evento.getLugar());
+		eve.setFecha_even(evento.getFecha_even());
+		eve.setDescripcion(evento.getDescripcion());
 		eve.setLogo(eve.getLogo());
 		
 		return eventoService.save(eve);	
 	}
 	@DeleteMapping("/eventos/{id}")
 	public void eliminarEvento(@PathVariable Long id) {
-		eventoService.findById(id);
+		eventoService.delete(id);
 	}
 
 }

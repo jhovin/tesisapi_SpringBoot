@@ -36,15 +36,16 @@ public class EmpresaController{
 		return empresaService.save(empresa);
 	}
 	@PutMapping("/empresas/{id}")
-	public Empresa update(@RequestBody Empresa empresa,@PathVariable Long id) {
+	public Empresa updateEmpresa(@PathVariable(value="id") Long id,@RequestBody Empresa empresa) {
 		Empresa emp=empresaService.findById(id);
-		emp.setCorreo(emp.getCorreo());
-		emp.setDireccion(emp.getDireccion());
-		emp.setNombre(emp.getNombre());
-		emp.setTelefono(emp.getTelefono());
-		emp.setRuc(emp.getRuc());
-		emp.setLogo(emp.getLogo());
-		emp.setTipo_emp(emp.getTipo_emp());
+		emp.setNombre(empresa.getNombre());
+		emp.setCorreo(empresa.getCorreo());
+		emp.setDireccion(empresa.getDireccion());
+		emp.setNombre(empresa.getNombre());
+		emp.setTelefono(empresa.getTelefono());
+		emp.setRuc(empresa.getRuc());
+		emp.setLogo(empresa.getLogo());
+		emp.setTipo_emp(empresa.getTipo_emp());
 		
 		return empresaService.save(emp);
 		
