@@ -10,7 +10,7 @@ public interface IDonacionService {
 	
 	public Donacion findById(Long id);
 	
-	public Donacion save(Donacion donacion);
+	public void save(Donacion donacion);
 	
 	public void delete(Long id);
 

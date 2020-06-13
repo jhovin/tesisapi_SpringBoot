@@ -30,6 +30,7 @@ public class Donacion implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date fecha_don;
 	private Long evento_id;
+	private Long user_id;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="donacion_id",referencedColumnName="id")
@@ -89,6 +90,14 @@ public class Donacion implements Serializable {
 		this.evento_id = evento_id;
 	}
 	
+	public Long getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(Long user_id) {
+		this.user_id = user_id;
+	}
+
 
 	/**
 	 * 

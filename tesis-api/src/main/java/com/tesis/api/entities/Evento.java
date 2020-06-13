@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -49,6 +50,11 @@ public class Evento implements Serializable{
 		
 	}
 	
+	@PrePersist()
+	public void prePersist(){
+		fecha_even = new Date();
+	}
+
 	public Long getId() {
 		return id;
 	}

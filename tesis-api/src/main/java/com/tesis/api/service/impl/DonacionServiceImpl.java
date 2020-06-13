@@ -27,11 +27,11 @@ public class DonacionServiceImpl implements IDonacionService {
 	public Donacion findById(Long id) {
 		return donacionDao.findById(id).orElse(null);
 	}
-
 	@Override
 	@Transactional
-	public Donacion save(Donacion donacion) {
-		return donacionDao.save(donacion);
+	public void save(Donacion donacion) {
+		 donacionDao.save(donacion);
+		
 	}
 
 	@Override
