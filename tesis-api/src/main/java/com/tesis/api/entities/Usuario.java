@@ -22,12 +22,18 @@ public class Usuario implements Serializable{
 	private Long id;
 	private String nombre;
 	private String apellido;
+	
+	@Column(unique=true)
 	private String dni;
+	
+	@Column(unique=true)
 	private String telefono;
 	private String direccion;
+	
 	@Column(unique=true)
 	private String email;
 	private String password;
+	@Column(length=2000)
 	private String foto;
 	@Temporal(TemporalType.DATE)
 	private Date fecha_usuario;
