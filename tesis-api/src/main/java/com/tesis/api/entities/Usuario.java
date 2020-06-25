@@ -1,13 +1,18 @@
 package com.tesis.api.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -38,6 +43,20 @@ public class Usuario implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date fecha_usuario;
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="user_id",referencedColumnName="id")
+	private List<Donacion> donacion=new ArrayList<>();
+	
+	
+	
+	public List<Donacion> getDonacion() {
+		return donacion;
+	}
+
+	public void setDonacion(List<Donacion> donacion) {
+		this.donacion = donacion;
+	}
+
 	@PrePersist()
 	public void prePersist(){
 		fecha_usuario = new Date();
@@ -105,6 +124,17 @@ public class Usuario implements Serializable{
 		this.foto = foto;
 	}
 	
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", telefono="
+				+ telefono + ", direccion=" + direccion + ", email=" + email + ", password=" + password + ", foto="
+				+ foto + ", fecha_usuario=" + fecha_usuario + "]";
+	}
+
+
+
+
 	private static final long serialVersionUID = 1L;
 
 }
